@@ -1,2 +1,2 @@
-# mario
-Super Mario Clone
+# Super Mario Bros. Clone
+Super Mario Clone in C++
