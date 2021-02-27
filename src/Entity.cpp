@@ -2,6 +2,7 @@
 
 Entity::Entity(/* args */)
 {
+    this->rev = false;
 }
 
 Entity::~Entity()
@@ -29,15 +30,37 @@ void Entity::UpdateAnim()
         animation[this->currAnim].width,
         animation[this->currAnim].height);
 
-        if(this->begin > animation[this->currAnim].speed)
+    if(this->begin > animation[this->currAnim].speed)
+    {
+        if(!this->rev)
         {
-            
             animation[this->currAnim].tick++;
-            begin = 0;
-        
         }
+        if(this->rev)
+        {
+            animation[this->currAnim].tick--;
+        }
+    
+        this->begin = 0;
+    
+    }
+    this->begin++;
+    
     if(animation[this->currAnim].tick >= animation[this->currAnim].amount)
     {
         animation[this->currAnim].tick = 0;
+    }
+    if(animation[this->currAnim].tick <= 0)
+    {
+        if(this->nAb)
+        {
+            this->currAnim = this->newAnim;
+            this->nAb = 0;
+            this->rev = 0;
+        }
+        else
+        {
+            animation[this->currAnim].tick = 0;
+        }
     }
 }

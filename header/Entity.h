@@ -8,6 +8,8 @@ private:
     
     int currAnim;
     int begin;
+    bool rev, nAb;
+    int newAnim;
 
     struct cycle
     {
@@ -28,4 +30,8 @@ public:
     void UpdateAnim();
 public:
     inline void SetCurrAnim(int currAnim) { this->begin =0, this->currAnim = currAnim; }
+public:
+    inline int GetCurrAnim() const {return this->currAnim; }
+    inline void Reverse(bool r) {this->rev = r; }
+    inline void Reverse(bool r, int nA) { this->rev; this->nAb = true; nA = this->newAnim; }
 };

@@ -9,6 +9,8 @@
 #define W_WIDTH 1280
 #define W_HEIGHT 720
 #define TILE_SIZE 16
+#define P_SIZE 64
+#define GRAVITY 10
 
 class Game
 {
@@ -21,7 +23,11 @@ private:
     //FPS
     int frameCount, timerFPS, lastFrame;
     Entity player;
-
+    int mapX;
+    int mapY;
+    int speed;
+    bool l, r, u, d, fall;
+    int idle_l, idle_r, run_l, run_r, jmp;
     std::vector<Object> map;
 public:
     Game();
@@ -34,5 +40,6 @@ public:
     void Draw(Object obj);
     void LoadMap(const char* filename);
     void DrawMap();
-
+    void ScrollMap(int x, int y);
+    bool Collison(Object a, Object b);
 };
